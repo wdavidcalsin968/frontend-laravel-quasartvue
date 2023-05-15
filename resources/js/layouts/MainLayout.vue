@@ -1,6 +1,6 @@
 <template>
     <q-layout view="lHh Lpr lFf">
-        <q-header elevated>
+        <q-header elevated class="bg-grey-9 q-pa-sm">
             <q-toolbar>
                 <q-btn
                     flat
@@ -11,15 +11,15 @@
                     @click="toggleLeftDrawer"
                 />
 
-                <q-toolbar-title>Laravel + Vite + Quasar</q-toolbar-title>
+                <q-toolbar-title>DashBoard Vue + Quasar</q-toolbar-title>
 
-                <div>Quasar v{{ $q.version }}</div>
+                <div>Version Actual {{ $q.version }}</div>
             </q-toolbar>
         </q-header>
 
-        <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+        <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-blue-grey-9">
             <q-list>
-                <q-item-label header>Essential Links</q-item-label>
+                <q-item-label header> <strong class="text-grey-2 text-lg">SiderBar</strong> </q-item-label>
 
                 <EssentialLink
                     v-for="link in essentialLinks"
@@ -41,22 +41,40 @@ import EssentialLink from "../components/EssentialLink.vue";
 
 const linksList = [
     {
-        title: "Github",
-        caption: "github.com/mohamad-supangat",
-        icon: "code",
-        link: "https://github.com/mohamad-supangat",
+        title: "Inicio",
+        // caption: "github.com/mohamad-supangat",
+        icon: "home",
+        link: "#",
     },
     {
-        title: "Docs Quasar",
-        caption: "quasar.dev",
+        title: "Clientes",
+        // caption: "quasar.dev",
         icon: "school",
-        link: "https://quasar.dev",
+        link: "#",
     },
     {
-        title: "Docs Laravel",
-        caption: "laravel.com/docs",
-        icon: "school",
-        link: "https://laravel.com/docs",
+        title: "Articulos",
+        // caption: "laravel.com/docs",
+        icon: "format_size",
+        link: "#",
+    },
+    {
+        title: "Estimaciones",
+        // caption: "laravel.com/docs",
+        icon: "print",
+        link: "#",
+    },
+    {
+        title: "tablas",
+        // caption: "laravel.com/docs",
+        icon: "today",
+        link: "#",
+    },
+    {
+        title: "Informes",
+        // caption: "laravel.com/docs",
+        icon: "style",
+        link: "#",
     },
 ];
 

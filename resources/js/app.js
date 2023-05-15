@@ -20,7 +20,8 @@ createInertiaApp({
           iconSet : quasarIconSet,
           config : {
             brand : {
-                primary: '#F73931',
+                primary: '#0176BC',
+                principal: '#2F6DF5',
             },
           }
         })
