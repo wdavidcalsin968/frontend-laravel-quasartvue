@@ -1,6 +1,5 @@
 <template>
     <div class="q-pa-md" style="max-width: 400px">
-        <pre>{{ name }} - {{ age }}</pre>
         <q-form @submit.prevent="onSubmit" @reset="onReset" class="q-gutter-md">
             <q-input filled v-model="name" label="Nombre" hint="Nombre y Apellidos" lazy-rules
                 :rules="[val => val && val.length > 0 || 'Por favor ingrese su nombre']" />

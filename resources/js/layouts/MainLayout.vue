@@ -1,50 +1,41 @@
 <template>
   <div class="q-pa-md">
-    <q-layout view="lHh Lpr lff">
-      <q-header elevated class="bg-cyan-8">
+    <q-layout view="hHh Lpr lff">
+      <q-header elevated :class="$q.dark.isActive ? 'bg-principal' : 'bg-principal'">
         <q-toolbar>
-          <q-toolbar-title align="center">
-            <q-btn flat round dense icon="dashboard" />
-            <q-btn flat round dense icon="assignment_ind"/>
-            <q-btn flat round dense icon="sim_card" class="q-mr-xs" />
-            <q-btn flat round dense icon="gamepad" />
-            DashBoard Vue + Quasar
-          </q-toolbar-title>
-          <!-- <q-btn flat to="/login" class="text-white" dense label="Login" /> -->
-          <div>Version Actual {{ $q.version }}</div>
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
+          <q-avatar>
+            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+          </q-avatar>
+          <q-toolbar-title>DashBoard Vue + Quasar</q-toolbar-title>
+          <MenuProfile/>
+          <!-- <q-btn flat round dense icon="whatshot" /> -->
         </q-toolbar>
-        <q-toolbar inset>
+        <!-- <q-toolbar inset>
           <q-breadcrumbs active-color="white" style="font-size: 16px">
             <q-breadcrumbs-el label="Home" icon="home" />
             <q-breadcrumbs-el label="Components" icon="widgets" />
             <q-breadcrumbs-el label="Index" />
           </q-breadcrumbs>
-        </q-toolbar>
+        </q-toolbar> -->
       </q-header>
 
-      <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="400">
-        <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+      <q-drawer v-model="drawer" show-if-above :mini="!drawer || miniState" @click.capture="drawerClick" :width="200"
+        :breakpoint="500" bordered :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'">
+        <q-scroll-area class="fit" :horizontal-thumb-style="{ opacity: 0 }">
           <q-list>
             <q-item-label header> <strong class="text-grey-10 text-lg">SiderBar</strong> </q-item-label>
 
             <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
           </q-list>
         </q-scroll-area>
-
-        <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
-          <div class="absolute-bottom bg-transparent">
-            <q-avatar size="56px" class="q-mb-sm">
-              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
-            </q-avatar>
-            <div class="text-weight-bold">Brad Tyler Sanchez Mamani</div>
-            <div>@BsanchezM</div>
-          </div>
-        </q-img>
+        <div class="q-mini-drawer-hide absolute" style="top: 15px; right: -17px">
+          <q-btn dense round unelevated color="primary" icon="chevron_left" @click="miniState = true" />
+        </div>
       </q-drawer>
 
       <q-page-container>
-        <slot />
+          <slot />
       </q-page-container>
     </q-layout>
   </div>
@@ -61,19 +52,19 @@ const linksList = [
     title: "Inicio",
     // caption: "github.com/mohamad-supangat",
     icon: "home",
-    link: "#",
+    link: "/",
   },
   {
     title: "Clientes",
     // caption: "quasar.dev",
     icon: "school",
-    to: "/about",
+    link: "/about",
   },
   {
-    title: "Articulos",
+    title: "Formulario",
     // caption: "laravel.com/docs",
     icon: "format_size",
-    link: "#",
+    link: "/formulario",
   },
   {
     title: "Estimaciones",
@@ -101,18 +92,24 @@ export default defineComponent({
   components: {
     EssentialLink,
     QIcon,
+    MenuProfile,
   },
 
   setup() {
-    const drawer = ref(false);
-
+    const miniState = ref(false)
+    const drawer = ref(true)
     return {
-      essentialLinks: linksList,
       drawer,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
-    };
-  },
-});
+      miniState,
+      essentialLinks: linksList,
+
+      drawerClick(e) {
+        if (miniState.value) {
+          miniState.value = false
+          e.stopPropagation()
+        }
+      }
+    }
+  }
+})
 </script>
