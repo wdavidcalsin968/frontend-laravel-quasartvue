@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return inertia('about');
 });
+
+Route::get('/formulario', function () {
+    return inertia('Formulario');
+});

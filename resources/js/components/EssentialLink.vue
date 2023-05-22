@@ -27,7 +27,7 @@ export default defineComponent({
             default: "",
         },
 
-        link: {
+        to: {
             type: String,
             default: "#",
         },
