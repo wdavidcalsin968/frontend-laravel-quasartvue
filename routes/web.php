@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return inertia('welcome');
 });
+
+Route::get('/about', function () {
+    return inertia('about');
+});
+
+Route::get('/formulario', function () {
+    return inertia('Formulario');
+});

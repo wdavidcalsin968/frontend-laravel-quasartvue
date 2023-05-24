@@ -1,82 +1,115 @@
 <template>
-    <q-layout view="lHh Lpr lFf">
-        <q-header elevated>
-            <q-toolbar>
-                <q-btn
-                    flat
-                    dense
-                    round
-                    icon="menu"
-                    aria-label="Menu"
-                    @click="toggleLeftDrawer"
-                />
+  <div class="q-pa-md">
+    <q-layout view="hHh Lpr lff">
+      <q-header elevated :class="$q.dark.isActive ? 'bg-principal' : 'bg-principal'">
+        <q-toolbar>
+          <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
+          <q-avatar>
+            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+          </q-avatar>
+          <q-toolbar-title>DashBoard Vue + Quasar</q-toolbar-title>
+          <MenuProfile/>
+          <!-- <q-btn flat round dense icon="whatshot" /> -->
+        </q-toolbar>
+        <!-- <q-toolbar inset>
+          <q-breadcrumbs active-color="white" style="font-size: 16px">
+            <q-breadcrumbs-el label="Home" icon="home" />
+            <q-breadcrumbs-el label="Components" icon="widgets" />
+            <q-breadcrumbs-el label="Index" />
+          </q-breadcrumbs>
+        </q-toolbar> -->
+      </q-header>
 
-                <q-toolbar-title>Laravel + Vite + Quasar</q-toolbar-title>
+      <q-drawer v-model="drawer" show-if-above :mini="!drawer || miniState" @click.capture="drawerClick" :width="200"
+        :breakpoint="500" bordered :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'">
+        <q-scroll-area class="fit" :horizontal-thumb-style="{ opacity: 0 }">
+          <q-list>
+            <q-item-label header> <strong class="text-grey-10 text-lg">SiderBar</strong> </q-item-label>
 
-                <div>Quasar v{{ $q.version }}</div>
-            </q-toolbar>
-        </q-header>
+            <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
+          </q-list>
+        </q-scroll-area>
+        <div class="q-mini-drawer-hide absolute" style="top: 15px; right: -17px">
+          <q-btn dense round unelevated color="primary" icon="chevron_left" @click="miniState = true" />
+        </div>
+      </q-drawer>
 
-        <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-            <q-list>
-                <q-item-label header>Essential Links</q-item-label>
-
-                <EssentialLink
-                    v-for="link in essentialLinks"
-                    :key="link.title"
-                    v-bind="link"
-                />
-            </q-list>
-        </q-drawer>
-
-        <q-page-container>
-            <slot />
-        </q-page-container>
+      <q-page-container>
+          <slot />
+      </q-page-container>
     </q-layout>
+  </div>
 </template>
-
+  
 <script>
 import { defineComponent, ref } from "vue";
+import { QIcon } from 'quasar'
 import EssentialLink from "../components/EssentialLink.vue";
+import MenuProfile from "../components/Menu.vue";
 
 const linksList = [
-    {
-        title: "Github",
-        caption: "github.com/mohamad-supangat",
-        icon: "code",
-        link: "https://github.com/mohamad-supangat",
-    },
-    {
-        title: "Docs Quasar",
-        caption: "quasar.dev",
-        icon: "school",
-        link: "https://quasar.dev",
-    },
-    {
-        title: "Docs Laravel",
-        caption: "laravel.com/docs",
-        icon: "school",
-        link: "https://laravel.com/docs",
-    },
+  {
+    title: "Inicio",
+    // caption: "github.com/mohamad-supangat",
+    icon: "home",
+    link: "/",
+  },
+  {
+    title: "Clientes",
+    // caption: "quasar.dev",
+    icon: "school",
+    link: "/about",
+  },
+  {
+    title: "Formulario",
+    // caption: "laravel.com/docs",
+    icon: "format_size",
+    link: "/formulario",
+  },
+  {
+    title: "Estimaciones",
+    // caption: "laravel.com/docs",
+    icon: "drafts",
+    link: "#",
+  },
+  {
+    title: "tablas",
+    // caption: "laravel.com/docs",
+    icon: "today",
+    link: "#",
+  },
+  {
+    title: "Informes",
+    // caption: "laravel.com/docs",
+    icon: "style",
+    link: "#",
+  },
 ];
 
 export default defineComponent({
-    name: "MainLayout",
+  name: "MainLayout",
 
-    components: {
-        EssentialLink,
-    },
+  components: {
+    EssentialLink,
+    QIcon,
+    MenuProfile,
+  },
 
-    setup() {
-        const leftDrawerOpen = ref(false);
+  setup() {
+    const miniState = ref(false)
+    const drawer = ref(true)
+    return {
+      drawer,
+      miniState,
+      essentialLinks: linksList,
 
-        return {
-            essentialLinks: linksList,
-            leftDrawerOpen,
-            toggleLeftDrawer() {
-                leftDrawerOpen.value = !leftDrawerOpen.value;
-            },
-        };
-    },
-});
+      drawerClick(e) {
+        if (miniState.value) {
+          miniState.value = false
+          e.stopPropagation()
+        }
+      }
+    }
+  }
+})
 </script>

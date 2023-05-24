@@ -3,7 +3,7 @@
         <title>Welcome to laravel + quasar</title>
     </Head>
     <Layout>
-        <q-page class="column flex-center">
+        <q-page class="column flex-center bg-grey-1">
             <div class="flex q-gutter-lg">
                 <q-img
                     width="100px"
@@ -19,7 +19,7 @@
 
             <div class="q-mt-xl">
                 <q-btn
-                    color="primary"
+                    color="light-blue-5"
                     dense
                     round
                     label="-"
@@ -30,7 +30,7 @@
                 <span class="q-mx-md text-bold">{{ count }}</span>
 
                 <q-btn
-                    color="primary"
+                    color="red"
                     dense
                     round
                     label="+"

@@ -16,11 +16,14 @@ createInertiaApp({
     createApp({render : () => h(App, props)})
         .use(plugin)
         .use(Quasar, {
-          plugins : {}, // import Quasar plugins and add here
+          plugins : {
+            plugin: 'Notify'
+          }, // import Quasar plugins and add here
           iconSet : quasarIconSet,
           config : {
             brand : {
-                primary: '#F73931',
+                primary: '#0176BC',
+                principal: '#2F6DF5',
             },
           }
         })
