@@ -13,7 +13,7 @@
 import { defineComponent, ref } from 'vue'
 
 const columns = [
-    { name: 'desc', required: true, label: 'Dessert (100g serving)', align: 'left', field: row => row.name, format: val => `${val}`, sortable: true},
+    { name: 'desc', required: true, label: 'Dessert (100g serving)', align: 'left', field: row => row.name, format: val => `${val}`, sortable: true },
     { name: 'calories', align: 'center', label: 'Calories', field: 'calories', sortable: true },
     { name: 'fat', label: 'Fat (g)', field: 'fat', sortable: true },
     { name: 'carbs', label: 'Carbs (g)', field: 'carbs' },
@@ -141,4 +141,41 @@ export default defineComponent({
     }
 });
 </script>
-  
+
+<style lang="css">
+.my-sticky-header-table {
+    height: 310px;
+}
+
+/* height or max-height is important */
+
+.q-table__top,
+.q-table__bottom,
+thead tr:first-child th {
+    background-color: #4d7ee8;
+}
+
+/* bg color is important for th; just specify one */
+
+thead tr th {
+    position: sticky;
+    z-index: 1;
+}
+
+thead tr:first-child th {
+    top: 0;
+}
+
+/* this is when the loading indicator appears */
+.q-table--loading thead tr:last-child th {
+    top: 48px;
+}
+
+/* height of all previous header rows */
+
+/* prevent scrolling behind sticky top row on focus */
+tbody {
+    scroll-margin-top: 48px;
+}
+
+/* height of all previous header rows */</style>

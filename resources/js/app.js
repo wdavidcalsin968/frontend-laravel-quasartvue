@@ -17,7 +17,9 @@ createInertiaApp({
     createApp({render : () => h(App, props)})
         .use(plugin)
         .use(Quasar, {
-          plugins : [Notify], // import Quasar plugins and add here
+          plugins : {
+            plugin: 'Notify'
+          }, // import Quasar plugins and add here
           iconSet : quasarIconSet,
           config : {
             brand : {
