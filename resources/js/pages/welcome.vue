@@ -16,6 +16,18 @@
                     alt="Laravel Logo"
                 />
             </div>
+            <div>
+                <q-circular-progress
+                    :value="count"
+                    :max="max"
+                    :min="min"
+                    size="100px"
+                    :thickness="1"
+                    color="grey-8"
+                    track-color="red-6"
+                    class="q-ma-md"
+                    />
+            </div>
 
             <div class="q-mt-xl">
                 <q-btn
@@ -52,6 +64,8 @@ import { Head } from "@inertiajs/vue3";
 
 const count = ref(0);
 
-const min = -10;
+const min = 0;
 const max = 10;
+
+
 </script>
