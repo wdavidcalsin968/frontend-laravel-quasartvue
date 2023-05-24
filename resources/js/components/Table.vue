@@ -152,7 +152,7 @@ export default defineComponent({
 .q-table__top,
 .q-table__bottom,
 thead tr:first-child th {
-    background-color: #4d7ee8;
+    background-color: #ffff ;
 }
 
 /* bg color is important for th; just specify one */
