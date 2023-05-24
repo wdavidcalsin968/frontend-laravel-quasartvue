@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>Welcome to laravel  quasar</title>
+        <title>Welcome to laravel + quasar</title>
     </Head>
     <Layout>
         <q-page class="column flex-center bg-grey-1">
@@ -52,6 +52,6 @@ import { Head } from "@inertiajs/vue3";
 
 const count = ref(0);
 
-const min = -5;
-const max = 5;
+const min = -10;
+const max = 10;
 </script>
