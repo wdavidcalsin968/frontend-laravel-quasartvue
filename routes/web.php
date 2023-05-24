@@ -24,3 +24,7 @@ Route::get('/about', function () {
 Route::get('/formulario', function () {
     return inertia('Formulario');
 });
+
+Route::get('/register', function () {
+    return inertia('FormRegister');
+});

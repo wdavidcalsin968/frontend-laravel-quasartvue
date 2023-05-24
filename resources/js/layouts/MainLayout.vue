@@ -40,7 +40,7 @@
     </q-layout>
   </div>
 </template>
-  
+
 <script>
 import { defineComponent, ref } from "vue";
 import { QIcon } from 'quasar'
@@ -55,6 +55,13 @@ const linksList = [
     link: "/",
   },
   {
+    title: "Login",
+    caption: "Formularios y Validaciones",
+    icon: "login",
+    link: "/register",
+  },
+
+  {
     title: "Clientes",
     // caption: "quasar.dev",
     icon: "school",
@@ -66,12 +73,7 @@ const linksList = [
     icon: "format_size",
     link: "/formulario",
   },
-  {
-    title: "Estimaciones",
-    // caption: "laravel.com/docs",
-    icon: "drafts",
-    link: "#",
-  },
+
   {
     title: "tablas",
     // caption: "laravel.com/docs",

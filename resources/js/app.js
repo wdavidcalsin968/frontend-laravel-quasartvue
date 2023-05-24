@@ -7,6 +7,7 @@ import {resolvePageComponent} from "laravel-vite-plugin/inertia-helpers";
 import {Quasar} from "quasar";
 import quasarIconSet from "quasar/icon-set/svg-mdi-v6";
 import {createApp, h} from "vue";
+import { Notify } from 'quasar';
 
 createInertiaApp({
   resolve : (name) => resolvePageComponent(
@@ -16,9 +17,7 @@ createInertiaApp({
     createApp({render : () => h(App, props)})
         .use(plugin)
         .use(Quasar, {
-          plugins : {
-            plugin: 'Notify'
-          }, // import Quasar plugins and add here
+          plugins : [Notify], // import Quasar plugins and add here
           iconSet : quasarIconSet,
           config : {
             brand : {
