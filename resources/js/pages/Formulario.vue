@@ -9,7 +9,7 @@
 
 <script setup>
 import Layout from "../layouts/MainLayout.vue";
-import FormP from "../components/Formulario.vue";
+import FormP from "../components/Form.vue";
 
 
 </script>

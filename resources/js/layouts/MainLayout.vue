@@ -9,19 +9,11 @@
           </q-avatar>
           <q-toolbar-title>DashBoard Vue + Quasar</q-toolbar-title>
           <MenuProfile/>
-          <!-- <q-btn flat round dense icon="whatshot" /> -->
         </q-toolbar>
-        <!-- <q-toolbar inset>
-          <q-breadcrumbs active-color="white" style="font-size: 16px">
-            <q-breadcrumbs-el label="Home" icon="home" />
-            <q-breadcrumbs-el label="Components" icon="widgets" />
-            <q-breadcrumbs-el label="Index" />
-          </q-breadcrumbs>
-        </q-toolbar> -->
       </q-header>
 
       <q-drawer v-model="drawer" show-if-above :mini="!drawer || miniState" @click.capture="drawerClick" :width="200"
-        :breakpoint="500" bordered :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'">
+        :breakpoint="500" bordered :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'" content-class="overlay-content">
         <q-scroll-area class="fit" :horizontal-thumb-style="{ opacity: 0 }">
           <q-list>
             <q-item-label header> <strong class="text-grey-10 text-lg">SiderBar</strong> </q-item-label>
@@ -44,6 +36,7 @@
 <script>
 import { defineComponent, ref } from "vue";
 import { QIcon } from 'quasar'
+import { useQuasar } from 'quasar'
 import EssentialLink from "../components/EssentialLink.vue";
 import MenuProfile from "../components/Menu.vue";
 
@@ -55,10 +48,10 @@ const linksList = [
     link: "/",
   },
   {
-    title: "Clientes",
+    title: "DataTable",
     // caption: "quasar.dev",
     icon: "school",
-    link: "/about",
+    link: "/datatable",
   },
   {
     title: "Formulario",
